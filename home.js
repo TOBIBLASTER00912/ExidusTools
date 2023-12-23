@@ -58,7 +58,7 @@ downloadAndCompare();
 process.title = "Exidus Tools | Home |+| Made by TOBIBLASTER0912 ";
 
 console.log(gradient.atlas(`
-V 1.0
+V 1.1
 
 
                                             This tool is made by TOBIBLASTER0912. You can change everything by typing 99 in the next page!.
