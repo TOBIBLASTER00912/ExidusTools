@@ -1,0 +1,5 @@
+{
+    "Webhook": "Sends all Checked Numbers to your selected Discord Channel with some extra information. MultiMode: Sends checked Numbers to all webhooks added to the file (use at own risk)",
+    "Bot": "Does the same as Webhook mode but command based with more infos. Dont forget to create an App on Discord before enabling!",
+    "Keys": "Stats of your API Keys."
+}
