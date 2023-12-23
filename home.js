@@ -14,6 +14,47 @@ const numberchecker = require("./numchecker/numgen.js")
 const sort = require("./sorter.js")
 const india = require("./region gens/india.js")
 console.clear();
+const { Octokit } = require('@octokit/rest');
+
+const owner = 'TOBIBLASTER00912';
+const repo = 'test';
+const filePath = 'v.json'; // Pfad zur Datei im Repository
+
+const octokit = new Octokit();
+
+async function downloadAndCompare() {
+  try {
+    // Herunterladen der Datei vom GitHub-Repository
+    const response = await octokit.repos.getContent({
+      owner,
+      repo,
+      path: filePath,
+    });
+
+    // Konvertiere den Inhalt der heruntergeladenen Datei zu JSON
+    const githubContent = JSON.parse(
+      Buffer.from(response.data.content, 'base64').toString()
+    );
+    const githubVersion = githubContent.Version;
+
+    // Lesen der lokalen Datei
+    const localContent = fs.readFileSync(filePath, 'utf8');
+    const localVersion = JSON.parse(localContent).Version;
+
+    // Vergleiche die Versionen
+    if (githubVersion > localVersion) {
+      console.log('Die GitHub-Version ist neuer!');
+      // Hier könntest du weitere Aktionen ausführen, wenn die Version neuer ist
+    } else {
+      console.log('Die lokale Version ist aktuell.');
+    }
+  } catch (error) {
+    console.error('Fehler beim Vergleichen der Dateien:', error);
+  }
+}
+
+downloadAndCompare();
+
 process.title = "Exidus Tools | Home |+| Made by TOBIBLASTER0912 ";
 
 console.log(gradient.atlas(`
